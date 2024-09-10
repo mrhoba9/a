@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*Engine Components starts*/
 function fetchAndImplement(componentName, array, container) {
-	fetch(`Engine-Components-${componentName}.json`)
+	fetch(`.././json/Engine-Components-${componentName}.json`)
 		.then((response) => response.json())
 		.then((data) => {
 			array.length = 0;
