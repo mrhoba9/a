@@ -116,7 +116,7 @@ function scrollToTop() {
 };
 window.onload = () => {
 	scrollToTop();
-	localStorage.clear()
+	// localStorage.clear()
 };
 arrow_btn.addEventListener("click", scrollToTop);
 /*arrow ends */
@@ -134,9 +134,18 @@ closeAside.addEventListener("click",()=>{
 })
 view_aside_container.addEventListener("click",()=>{
 	aside_conatiner.style.display = "flex";
-	setTimeout(()=>{
-		aside_conatiner.style.padding = "40px";
-		aside_conatiner.style.width = "450px";
-	},200);
+	if(window.innerWidth <= 449){
+		setTimeout(()=>{
+			aside_conatiner.style.padding = "40px 10px 10px 10px";
+			aside_conatiner.style.width = "100%";
+			aside_conatiner.style.maxWidth = "100%";
+		},200);
+	}
+	if(window.innerWidth > 449){
+		setTimeout(()=>{
+			aside_conatiner.style.padding = "40px";
+			aside_conatiner.style.width = "450px";
+		},200);
+	}
 })
 /*aside endss*/

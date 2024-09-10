@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*Engine Components starts*/
 function fetchAndImplement(componentName, array, container) {
-	fetch(`Engine-Components-${componentName}.json`)
+	fetch(`.././json/Engine-Components-${componentName}.json`)
 		.then((response) => response.json())
 		.then((data) => {
 			array.length = 0;
@@ -340,16 +340,18 @@ function favContainerFunc(id,item){
 	for(let i = 0; i < favArray.length; i++) {
 		if(id === favArray[i].type + favArray[i].id) {
 			exists = true;
+			alert("Added Before");
 			break;
 		}
 	}
 	if (!exists && favArray.length <= 39) {
 		favArray.push(item);
 		localStorage.setItem("favArrayStorage", JSON.stringify(favArray));
-		console.log(favArray.length)
 		favContainer.innerHTML += favImplement(item);
 		remainCards.innerText = `${favArray.length}/40`;
 		localStorage.setItem("remainCardsStorage", JSON.stringify(remainCards.innerText));
+	}else if(favArray.length == 40){
+		alert("You reached cart items");
 	}
 }
 function favImplement(item){
@@ -370,14 +372,12 @@ function removeFav(id){
 		localStorage.setItem("favArrayStorage", JSON.stringify(favArray));
 		remainCards.innerText = `${favArray.length}/40`;
 		localStorage.setItem("remainCardsStorage", JSON.stringify(remainCards.innerText));
-		console.log(favArray.length);
 		implementAfterRemove();
     } else {
-        console.log("Item not found.");
+        alert("Item not found.");
     }
 }
 function implementAfterRemove(){
-	console.log("implementAfterRemove"+ favArray.length);
 	favContainer.innerHTML = "";
 	favArray.forEach(index =>{
 		favContainer.innerHTML += favImplement(index);
