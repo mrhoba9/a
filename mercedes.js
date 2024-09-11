@@ -334,7 +334,7 @@ function favImplement(item){
 		<div class="Fav-list-item p-3 relative">
 			<img src="${item.image}" alt="${item.image}" class="Fav-Image" id="searchImageResult">
 			<p class="FavText">${item.name}</p>
-			<p class="FavPrice text-red-600 font-bold">${item.price}.00</p>
+			<p class="FavPrice text-red-600 font-bold">${item.price}</p>
 			<i id="close-${item.type + item.id}" onclick='removeFav(this.id, ${JSON.stringify(item)})' class="material-symbols-outlined absolute right-1 top-1 cursor-pointer text-black font-bold select-none">close</i>
 		</div>
 	`
