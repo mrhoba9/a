@@ -212,10 +212,6 @@ body {
 	flex-wrap: wrap;
 	gap: 5px;/*38*/
 }
-.all-sections-category .all-divs-category:nth-child(1) {
-	background-color: red;
-}
-
 /*card style starts*/
 .card {
 	width: 300px;
@@ -435,6 +431,7 @@ body {
 	box-shadow: 0 4px 8px #00000080;
 	transition: all 0.3s ease-in-out;
 	width: 0px;
+	z-index: 20;
 }
 #fav-container {
 	padding-bottom: 5px;

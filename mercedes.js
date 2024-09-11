@@ -78,6 +78,9 @@ let mode = "Piston";
 const favContainer = document.getElementById("fav-container");
 let favArray = localStorage.getItem("favArrayStorage") ? JSON.parse(localStorage.getItem("favArrayStorage")) : [];
 let remainCardsText = document.getElementById("remainCards");
+let totalPriceContainer = document.getElementById("totalPrice");
+let totalPrice = 0;
+const notFound = document.getElementById("notFound");
 /*other decleration ends*/
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -101,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*Engine Components starts*/
 function fetchAndImplement(componentName, array, container) {
-	fetch(`Engine-Components-${componentName}.json`)
+	fetch(`.././json/Engine-Components-${componentName}.json`)
 		.then((response) => response.json())
 		.then((data) => {
 			array.length = 0;
@@ -289,38 +292,23 @@ function cardHTMLTemplate(item) {
     </div>
     `;
 }
-function initializeFavorites() {
-	favContainer.innerHTML = "";
-    favArray.forEach(item => {
-        favContainer.innerHTML += favImplement(item);
-		let favBtn = document.getElementById(`${item.type + item.id}`);
-		if(favBtn){
-			favBtn.classList.add("toggleColorFav");
-		}
-    });
-	if(favArray !== ""){
-		remainCards.innerText = `${favArray.length}/40`;
-	}
-}
-setTimeout(()=>{
-	initializeFavorites();
-},2000);
+
 
 function favContainerFunc(id,item){
 	let favBtn = document.getElementById(`${item.type + item.id}`);
-
 	let exists = false;
+
 	for(let i = 0; i < favArray.length; i++) {
 		if(id === favArray[i].type + favArray[i].id) {
 			exists = true;
-			// alert("Added Before");
 			break;
 		}
 	}
 	if (!exists && favArray.length <= 39) {
 		favArray.push(item);
 		favBtn.classList.add("toggleColorFav");
-
+		totalPrice += parseFloat(item.price.replace(/[^\d.-]/g, ''));
+		totalPriceContainer.innerHTML = `EGP ${totalPrice}`;
 		localStorage.setItem("favArrayStorage", JSON.stringify(favArray));
 		favContainer.innerHTML += favImplement(item);
 		remainCards.innerText = `${favArray.length}/40`;
@@ -347,6 +335,8 @@ function removeFav(id,item){
 	const index = favArray.findIndex(fav => "close-"+fav.type + fav.id === id);
     if (index !== -1) {
         favArray.splice(index, 1);
+		totalPrice -= parseFloat(item.price.replace(/[^\d.-]/g, ''));
+		totalPriceContainer.innerHTML = `EGP ${totalPrice}`;
 		favBtn.classList.remove("toggleColorFav");
 		localStorage.setItem("favArrayStorage", JSON.stringify(favArray));
 		remainCards.innerText = `${favArray.length}/40`;
@@ -354,7 +344,7 @@ function removeFav(id,item){
 		implementAfterRemove();
     } else {
         alert("Item not found.");
-    }
+	}
 }
 function implementAfterRemove(){
 	favContainer.innerHTML = "";
@@ -362,4 +352,23 @@ function implementAfterRemove(){
 		favContainer.innerHTML += favImplement(index);
 	})
 	
+};
+
+function initializeFavorites() {
+	favContainer.innerHTML = "";
+    favArray.forEach(item => {
+        favContainer.innerHTML += favImplement(item);
+		totalPrice += parseFloat(item.price.replace(/[^\d.-]/g, ''));
+		totalPriceContainer.innerHTML = `EGP ${totalPrice}`;
+		let favBtn = document.getElementById(`${item.type + item.id}`);
+		if(favBtn){
+			favBtn.classList.add("toggleColorFav");
+		}
+    });
+	if(favArray !== ""){
+		remainCards.innerText = `${favArray.length}/40`;
+	}
 }
+setTimeout(()=>{
+	initializeFavorites();
+},2000);

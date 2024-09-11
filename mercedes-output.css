@@ -907,6 +907,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1779,6 +1783,11 @@ video {
   padding-right: 0.75rem;
 }
 
+.px-36 {
+  padding-left: 9rem;
+  padding-right: 9rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2030,6 +2039,10 @@ video {
 
 .-tracking-tight {
   letter-spacing: 0.025em;
+}
+
+.-tracking-tighter {
+  letter-spacing: 0.05em;
 }
 
 .tracking-widest {
@@ -2507,10 +2520,6 @@ body {
   /*38*/
 }
 
-.all-sections-category .all-divs-category:nth-child(1) {
-  background-color: red;
-}
-
 /*card style starts*/
 
 .card {
@@ -2770,6 +2779,7 @@ body {
   box-shadow: 0 4px 8px #00000080;
   transition: all 0.3s ease-in-out;
   width: 0px;
+  z-index: 20;
 }
 
 #fav-container {
