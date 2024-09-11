@@ -2477,28 +2477,38 @@ body {
   font-size: 20px;
   font-family: "DM Serif Text", serif;
   letter-spacing: 0.09rem;
-  background-color: #f59e0b;
-  color: white;
-  width: 100%;
+  background-color:#2600ff15;
+  color: #000;
+  width: 300px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
   text-align: center;
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   height:50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .components {
-  background-color: transparent;
+  background-color: #2600ff15;
   width: 100%;
   min-height: 100%;
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 20px 17px;
+  padding: 20px 5px;
+  /*17*/
   flex-wrap: wrap;
-  gap: 38px;
+  gap: 5px;
+  /*38*/
+}
+
+.all-sections-category .all-divs-category:nth-child(1) {
+  background-color: red;
 }
 
 /*card style starts*/
@@ -2507,8 +2517,9 @@ body {
   width: 300px;
   height: auto;
   border-radius: 10px;
-  margin: 20px;
-  background-color: #fff9e6;
+  margin: 5px;
+  background-color: #fff;
+  /*fff9e6*/
   border: 1px solid #bea200;
   box-shadow: 2px 2px 8px #ffffff96;
   overflow: hidden;
@@ -2758,7 +2769,7 @@ body {
   background: #eee;
   box-shadow: 0 4px 8px #00000080;
   transition: all 0.3s ease-in-out;
-  width: 0;
+  width: 0px;
 }
 
 #fav-container {

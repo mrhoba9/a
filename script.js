@@ -18,6 +18,9 @@ const electricalComponentsSection = document.getElementById('Electrical-Componen
 const bodyPartsSection = document.getElementById('Body-Parts');
 const accessoriesSection = document.getElementById('Accessories');
 let pop_div_holder = document.getElementById("pop_div_holder");
+pop_div_holder.onclick = ()=>{
+	pop_div_holder.classList.add("hide");
+};
 category_search.onclick = () => {
 	pop_div_holder.classList.remove("hide");
 	pop_div_holder.classList.add("show-block");

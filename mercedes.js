@@ -82,26 +82,26 @@ let remainCardsText = document.getElementById("remainCards");
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchAndImplement("pistons", PistonArray, pistoncardContainer);
-	fetchAndImplement(
-		"crankshafts",
-		CrankshaftsArray,
-		Engine_Components_Crankshafts_Container
-	);
-	fetchAndImplement(
-		"Cylinder-Heads",
-		Cylinder_HeadsArray,
-		Engine_Components_Cylinder_HeadsContainer
-	);
-	fetchAndImplement(
-		"Turbochargers",
-		TurbochargersArray,
-		Engine_Components_Turbochargers_container
-	);
+	fetchAndImplement("crankshafts",CrankshaftsArray,Engine_Components_Crankshafts_Container);
+	fetchAndImplement("Cylinder-Heads",Cylinder_HeadsArray,Engine_Components_Cylinder_HeadsContainer);
+	fetchAndImplement("Turbochargers",TurbochargersArray,Engine_Components_Turbochargers_container);
+	fetchAndImplement("brakePads", brakePadsArray, brakePadsContainer);
+	fetchAndImplement("brakeRotors", brakeRotorsArray, brakeRotorsContainer);
+	fetchAndImplement("brakeCalipers",brakeCalipersArray,brakeCalipersContainer);
+	fetchAndImplement("alternators", alternatorsArray, alternatorsContainer);
+	fetchAndImplement("starters", startersArray, startersContainer);
+	fetchAndImplement("wiringHarnesses",wiringHarnessesArray,wiringHarnessesContainer);
+	fetchAndImplement("bumpers", bumpersArray, bumpersContainer);
+	fetchAndImplement("mirrors", mirrorsArray, mirrorsContainer);
+	fetchAndImplement("grilles", grillesArray, grillesContainer);
+	fetchAndImplement("accessoriesLights",accessoriesLightsArray,accessoriesLightsContainer);
+	fetchAndImplement("airHorns", airHornsArray, airHornsContainer);
+	fetchAndImplement("floorMats", floorMatsArray, floorMatsContainer);
 });
 
 /*Engine Components starts*/
 function fetchAndImplement(componentName, array, container) {
-	fetch(`Engine-Components-${componentName}.json`)
+	fetch(`.././json/Engine-Components-${componentName}.json`)
 		.then((response) => response.json())
 		.then((data) => {
 			array.length = 0;
@@ -134,63 +134,28 @@ function implementComponent(array, container) {
 first.onclick = () => {
 	mode = "Piston";
 	SearchNameInp.value = "";
-	fetchAndImplement("pistons", PistonArray, pistoncardContainer);
-	fetchAndImplement(
-		"crankshafts",
-		CrankshaftsArray,
-		Engine_Components_Crankshafts_Container
-	);
-	fetchAndImplement(
-		"Cylinder-Heads",
-		Cylinder_HeadsArray,
-		Engine_Components_Cylinder_HeadsContainer
-	);
-	fetchAndImplement(
-		"Turbochargers",
-		TurbochargersArray,
-		Engine_Components_Turbochargers_container
-	);
 };
+
 second.onclick = () => {
 	mode = "Brake Systems";
 	SearchNameInp.value = "";
-	fetchAndImplement("brakePads", brakePadsArray, brakePadsContainer);
-	fetchAndImplement("brakeRotors", brakeRotorsArray, brakeRotorsContainer);
-	fetchAndImplement(
-		"brakeCalipers",
-		brakeCalipersArray,
-		brakeCalipersContainer
-	);
 };
+
 third.onclick = () => {
 	mode = "Engine Components";
 	SearchNameInp.value = "";
-	fetchAndImplement("alternators", alternatorsArray, alternatorsContainer);
-	fetchAndImplement("starters", startersArray, startersContainer);
-	fetchAndImplement(
-		"wiringHarnesses",
-		wiringHarnessesArray,
-		wiringHarnessesContainer
-	);
 };
+
 sixth.onclick = () => {
 	mode = "Body Parts";
 	SearchNameInp.value = "";
-	fetchAndImplement("bumpers", bumpersArray, bumpersContainer);
-	fetchAndImplement("mirrors", mirrorsArray, mirrorsContainer);
-	fetchAndImplement("grilles", grillesArray, grillesContainer);
 };
+
 seventh.onclick = () => {
 	mode = "Accessories";
 	SearchNameInp.value = "";
-	fetchAndImplement(
-		"accessoriesLights",
-		accessoriesLightsArray,
-		accessoriesLightsContainer
-	);
-	fetchAndImplement("airHorns", airHornsArray, airHornsContainer);
-	fetchAndImplement("floorMats", floorMatsArray, floorMatsContainer);
 };
+
 /*breakSystem ends*/
 
 /*search Starts*/
@@ -316,7 +281,7 @@ function cardHTMLTemplate(item) {
                     <h3>${item.price}</h3>
                 </div>
                 <div class="view-btn">
-					<i id="${item.type + item.id}" onclick='favContainerFunc(this.id, ${JSON.stringify(item)})' class="material-symbols-outlined">shopping_cart</i>
+					<i id="${item.type + item.id}" onclick='favContainerFunc(this.id, ${JSON.stringify(item)})' class="material-symbols-outlined">favorite</i>
 				</div>
             </div>
             <hr />
@@ -325,27 +290,37 @@ function cardHTMLTemplate(item) {
     `;
 }
 function initializeFavorites() {
-	
+	favContainer.innerHTML = "";
     favArray.forEach(item => {
         favContainer.innerHTML += favImplement(item);
+		let favBtn = document.getElementById(`${item.type + item.id}`);
+		if(favBtn){
+			favBtn.classList.add("toggleColorFav");
+		}
     });
 	if(favArray !== ""){
 		remainCards.innerText = `${favArray.length}/40`;
 	}
 }
-initializeFavorites()
+setTimeout(()=>{
+	initializeFavorites();
+},2000);
 
 function favContainerFunc(id,item){
+	let favBtn = document.getElementById(`${item.type + item.id}`);
+
 	let exists = false;
 	for(let i = 0; i < favArray.length; i++) {
 		if(id === favArray[i].type + favArray[i].id) {
 			exists = true;
-			alert("Added Before");
+			// alert("Added Before");
 			break;
 		}
 	}
 	if (!exists && favArray.length <= 39) {
 		favArray.push(item);
+		favBtn.classList.add("toggleColorFav");
+
 		localStorage.setItem("favArrayStorage", JSON.stringify(favArray));
 		favContainer.innerHTML += favImplement(item);
 		remainCards.innerText = `${favArray.length}/40`;
@@ -360,15 +335,19 @@ function favImplement(item){
 			<img src="${item.image}" alt="${item.image}" class="Fav-Image" id="searchImageResult">
 			<p class="FavText">${item.name}</p>
 			<p class="FavPrice text-red-600 font-bold">${item.price}.00</p>
-			<i id="${item.type + item.id}" onclick='removeFav(this.id, ${JSON.stringify(item)})' class="material-symbols-outlined absolute right-1 top-1 cursor-pointer text-black font-bold select-none">close</i>
+			<i id="close-${item.type + item.id}" onclick='removeFav(this.id, ${JSON.stringify(item)})' class="material-symbols-outlined absolute right-1 top-1 cursor-pointer text-black font-bold select-none">close</i>
 		</div>
 	`
 }
 
-function removeFav(id){
-	const index = favArray.findIndex(fav => fav.type + fav.id === id);
+function removeFav(id,item){
+	let favBtn = document.getElementById(item.type + item.id);
+	// console.log(favBtn)
+
+	const index = favArray.findIndex(fav => "close-"+fav.type + fav.id === id);
     if (index !== -1) {
         favArray.splice(index, 1);
+		favBtn.classList.remove("toggleColorFav");
 		localStorage.setItem("favArrayStorage", JSON.stringify(favArray));
 		remainCards.innerText = `${favArray.length}/40`;
 		localStorage.setItem("remainCardsStorage", JSON.stringify(remainCards.innerText));
