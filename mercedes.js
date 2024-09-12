@@ -1,16 +1,8 @@
 /*piston decleration starts*/
-const pistoncardContainer = document.getElementById(
-	"Engine-Components-Pistons"
-);
-const Engine_Components_Crankshafts_Container = document.getElementById(
-	"Engine-Components-Crankshafts"
-);
-const Engine_Components_Cylinder_HeadsContainer = document.getElementById(
-	"Engine-Components-Cylinder-Heads"
-);
-const Engine_Components_Turbochargers_container = document.getElementById(
-	"Engine-Components-Turbochargers"
-);
+const pistoncardContainer = document.getElementById("Engine-Components-Pistons");
+const Engine_Components_Crankshafts_Container = document.getElementById("Engine-Components-Crankshafts");
+const Engine_Components_Cylinder_HeadsContainer = document.getElementById("Engine-Components-Cylinder-Heads");
+const Engine_Components_Turbochargers_container = document.getElementById("Engine-Components-Turbochargers");
 const PistonArray = [];
 const CrankshaftsArray = [];
 const Cylinder_HeadsArray = [];
@@ -19,27 +11,17 @@ const TurbochargersArray = [];
 
 /*break decleratione starts*/
 const brakePadsContainer = document.getElementById("Brake-Systems-Brake-Pads");
-const brakeRotorsContainer = document.getElementById(
-	"Brake-Systems-Brake-Rotors"
-);
-const brakeCalipersContainer = document.getElementById(
-	"Brake-Systems-Brake-Calipers"
-);
+const brakeRotorsContainer = document.getElementById("Brake-Systems-Brake-Rotors");
+const brakeCalipersContainer = document.getElementById("Brake-Systems-Brake-Calipers");
 const brakePadsArray = [];
 const brakeRotorsArray = [];
 const brakeCalipersArray = [];
 /*break decleratione ends*/
 
 /*Electrical Components starts*/
-const alternatorsContainer = document.getElementById(
-	"Electrical-Components-Alternators"
-);
-const startersContainer = document.getElementById(
-	"Electrical-Components-Starters"
-);
-const wiringHarnessesContainer = document.getElementById(
-	"Electrical-Components-Wiring-Harnesses"
-);
+const alternatorsContainer = document.getElementById("Electrical-Components-Alternators");
+const startersContainer = document.getElementById("Electrical-Components-Starters");
+const wiringHarnessesContainer = document.getElementById("Electrical-Components-Wiring-Harnesses");
 const alternatorsArray = [];
 const startersArray = [];
 const wiringHarnessesArray = [];
@@ -55,8 +37,7 @@ const grillesArray = [];
 /*body parts ends*/
 
 /*Accessories starts*/
-const accessoriesLightsContainer =
-	document.getElementById("Accessories-Lights");
+const accessoriesLightsContainer = document.getElementById("Accessories-Lights");
 const airHornsContainer = document.getElementById("Accessories-Air-Horns");
 const floorMatsContainer = document.getElementById("Accessories-Floor-Mats");
 const accessoriesLightsArray = [];
@@ -83,6 +64,7 @@ let totalPrice = 0;
 const notFound = document.getElementById("notFound");
 /*other decleration ends*/
 
+
 document.addEventListener("DOMContentLoaded", () => {
 	fetchAndImplement("pistons", PistonArray, pistoncardContainer);
 	fetchAndImplement("crankshafts",CrankshaftsArray,Engine_Components_Crankshafts_Container);
@@ -100,11 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	fetchAndImplement("accessoriesLights",accessoriesLightsArray,accessoriesLightsContainer);
 	fetchAndImplement("airHorns", airHornsArray, airHornsContainer);
 	fetchAndImplement("floorMats", floorMatsArray, floorMatsContainer);
+	document.getElementById("footer-footer").innerHTML += `<p class="text-white text-center">&copy; auro-eg.com</p>`
 });
 
 /*Engine Components starts*/
 function fetchAndImplement(componentName, array, container) {
-	fetch(`Engine-Components-${componentName}.json`)
+	fetch(`./json/Engine-Components-${componentName}.json`)
 		.then((response) => response.json())
 		.then((data) => {
 			array.length = 0;
@@ -117,6 +100,11 @@ function fetchAndImplement(componentName, array, container) {
 			console.error(`Error fetching ${componentName} JSON data:`, error)
 		);
 }
+function implementComponent(array, container) {
+	container.innerHTML = "";
+	array.forEach((item) => (container.innerHTML += cardHTMLTemplate(item)));
+}
+/*Engine Components ends*/
 
 /*shuffle the arrays starts*/
 function shuffleArray(array) {
@@ -127,43 +115,32 @@ function shuffleArray(array) {
 }
 /*shuffle the arrays ends */
 
-function implementComponent(array, container) {
-	container.innerHTML = "";
-	array.forEach((item) => (container.innerHTML += cardHTMLTemplate(item)));
-}
-/*Engine Components ends*/
-
 /*breakSystem starts*/
 first.onclick = () => {
 	mode = "Piston";
 	SearchNameInp.value = "";
 };
-
 second.onclick = () => {
 	mode = "Brake Systems";
 	SearchNameInp.value = "";
 };
-
 third.onclick = () => {
 	mode = "Engine Components";
 	SearchNameInp.value = "";
 };
-
 sixth.onclick = () => {
 	mode = "Body Parts";
 	SearchNameInp.value = "";
 };
-
 seventh.onclick = () => {
 	mode = "Accessories";
 	SearchNameInp.value = "";
 };
-
 /*breakSystem ends*/
 
 /*search Starts*/
 function SearchByName() {
-	const inputValue = SearchNameInp.value.toLowerCase();
+	const inputValue = SearchNameInp.value.toLowerCase().replace(/[#@<>{}]/g, '');
 	let combinedArray = [];
 	let htmlStrings = {};
 	let containers = {};
@@ -271,6 +248,7 @@ SearchNameInp.addEventListener("keyup", () => {
 		SearchByName();
 	}
 });
+
 /*implements starts*/
 function cardHTMLTemplate(item) {
 	return `
@@ -292,8 +270,9 @@ function cardHTMLTemplate(item) {
     </div>
     `;
 }
+/*implements ends*/
 
-
+/*fav starts*/
 function favContainerFunc(id,item){
 	let favBtn = document.getElementById(`${item.type + item.id}`);
 	let exists = false;
@@ -327,7 +306,6 @@ function favImplement(item){
 		</div>
 	`
 }
-
 function removeFav(id,item){
 	let favBtn = document.getElementById(item.type + item.id);
 	// console.log(favBtn)
@@ -353,7 +331,6 @@ function implementAfterRemove(){
 	})
 	
 };
-
 function initializeFavorites() {
 	favContainer.innerHTML = "";
     favArray.forEach(item => {
@@ -372,3 +349,4 @@ function initializeFavorites() {
 setTimeout(()=>{
 	initializeFavorites();
 },2000);
+/*fav ends*/

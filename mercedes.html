@@ -21,93 +21,44 @@
 	</head>
 	<body>
 		<button class="material-symbols-outlined" id="arrow-up-btn">arrow_upward</button>
+		
 		<!--nav bar starts-->
-		<nav class="bg-white border-gray-200 dark:bg-gray-900 transition-all">
-			<div
-				class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-			>
-				<a
-					href="https://auro-eg.com"
-					target="_blank"
-					class="flex items-center space-x-3 rtl:space-x-reverse"
-				>
-					<img
-						src="truckIcon.png"
-						class="h-8 rounded-full"
-						alt="Flowbite Logo"
-					/>
-					<span
-						class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-						>TruckStore</span
-					>
+		<nav class="bg-white border-gray-200 dark:bg-teal-900 transition-all">
+			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+				<a href="https://auro-eg.com" target="_blank" class="flex items-center space-x-3 rtl:space-x-reverse">
+					<img src="./images/truckIcon.png" class="h-8 rounded-full" alt="Flowbite Logo" />
+					<span class="self-center text-2xl font-semibold whitespace-nowrap text-teal-600 dark:text-teal-300">TruckStore</span>
 				</a>
-				<button
-					data-collapse-toggle="navbar-default"
-					type="button"
-					class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-					aria-controls="navbar-default"
-					aria-expanded="false"
-				>
+				<button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-teal-600 rounded-lg md:hidden hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-300 dark:text-teal-300 dark:hover:bg-gray-700 dark:focus:ring-teal-500 transition-transform duration-300" aria-controls="navbar-default" aria-expanded="false">
 					<span class="sr-only">Open main menu</span>
-					<svg
-						class="w-5 h-5 active:opacity-50"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 17 14"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M1 1h15M1 7h15M1 13h15"
-						/>
+					<svg class="w-5 h-5 active:opacity-50" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
 					</svg>
 				</button>
 				<div class="hidden w-full md:block md:w-auto" id="navbar-default">
-					<ul
-						class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-					>
+					<ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
 						<li>
-							<a
-								href="../truck.html"
-								target="_blank"
-								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-								aria-current="page"
-								>Home</a
-							>
+							<a href="truck.html" target="_blank" class="block py-2 px-3 text-teal-600 rounded hover:bg-teal-500 md:hover:bg-transparent md:border-0 md:p-0 dark:text-teal-300 dark:hover:text-teal-400 transition-transform duration-300" aria-current="page">Home</a>
 						</li>
 						<li>
-							<a
-								href="../truck.html"
-								target="_blank"
-								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-								>About</a
-							>
+							<a href="truck.html" target="_blank" class="block py-2 px-3 text-teal-600 rounded hover:bg-teal-500 md:hover:bg-transparent md:border-0 md:p-0 dark:text-teal-300 dark:hover:text-teal-400 transition-transform duration-300">About</a>
 						</li>
 						<li>
-							<i id="view_aside_container" class="material-symbols-outlined block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent cursor-pointer">
-								shopping_bag
-							</i>
+							<a id="view_aside_container" class="block py-2 px-3 text-teal-600 rounded hover:bg-teal-500 md:hover:bg-transparent md:border-0 md:p-0 dark:text-teal-300 dark:hover:text-teal-400 cursor-pointer transition-transform duration-300">Favorites</a>
 						</li>
 						<li>
-							<a
-								class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white cursor-pointer md:dark:text-blue-500"
-								>Mercedes Benz</a
-							>
+							<a class="block py-2 px-3 text-white bg-indigo-600 rounded md:bg-transparent md:text-indigo-700 md:p-0 dark:text-white md:dark:text-indigo-500 transition-transform duration-300">Mercedes Benz</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<!--nav bar starts-->
+
+
 		<!--search starts-->
 		<section class="search-section relative flex justify-evenly items-center flex-col">
-			<button id="category_search" class="Btn">Filter 
-				<svg class="svg" viewBox="0 0 512 512">
-				<path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
-			</button>
+			<button id="category_search" class="Btn">Filter  <svg class="svg" viewBox="0 0 512 512"> <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg></button>
 			<div class="search-input-holder">
 				<div class="wave-group">
 					<input required="" type="text" class="input" id="SearchName">
@@ -124,6 +75,9 @@
 			</div>
 		</section>
 		<!--search ends-->
+
+
+		<!--containers starts-->
 		<section class="all-sections-category" id="Engine-Components">
 			<h2>Engine Components</h2>
 			<div class="all-divs-category" id="Pistons">
@@ -239,27 +193,33 @@
 				</div>
 			</div>
 		</section>
+		<!--containers ends-->
 
-		<aside class="aside-conatiner h-screen fixed top-0 right-0 flex items-center flex-col p-0 pt-12 overflow-y-scroll" id="aside-conatiner">
-			<i class="material-symbols-outlined absolute left-3 top-3 cursor-pointer text-black font-bold" id="close_aside_fav">close</i>
-			<div class="bg-yellow-600 w-full flex justify-between items-center mb-12 rounded-xl p-2">
-				<h5 class="text-2xl text-white flex-1 ">My Favorites</h5>
-				<b id="remainCards" class="bg-white text-yellow-600 p-2 inline-block w-24 text-center rounded-xl">0/40</b>
+
+		<!--favorite side starts-->
+		<aside class="aside-conatiner h-screen fixed top-0 right-0 flex items-center flex-col p-0 pt-12 overflow-y-scroll bg-gray-100 shadow-lg" id="aside-conatiner">
+			<i class="material-symbols-outlined absolute left-3 top-3 cursor-pointer text-gray-700 font-bold" id="close_aside_fav">close</i>
+			<div class="bg-teal-500 w-full flex justify-between items-center mb-12 rounded-xl p-2 shadow-md">
+				<h5 class="text-2xl text-white flex-1">My Favorites</h5>
+				<b id="remainCards" class="bg-white text-teal-500 p-2 inline-block w-24 text-center rounded-xl shadow-inner">0/40</b>
 			</div>
 			
 			<div class="bg-transparent w-full" id="fav-container">
 				<!-- <div class="Fav-list-item p-3 relative">
-						<img src="../images/merc.webp" alt="" class="Fav-Image" id="searchImageResult">
+						<img src="./images/merc.webp" alt="" class="Fav-Image" id="searchImageResult">
 						<p class="FavText">Lorem ipsum dolor</p>
-						<p class="FavPrice text-red-600 font-bold">EGP 12312.00</p>
-						<i class="material-symbols-outlined absolute right-1 top-1 cursor-pointer text-black font-bold">close</i>
+						<p class="FavPrice text-indigo-600 font-bold">EGP 12312.00</p>
+						<i class="material-symbols-outlined absolute right-1 top-1 cursor-pointer text-gray-700 font-bold">close</i>
 				</div> -->
 			</div>
 			<div class="bg-transparent mt-7 w-full h-20 flex justify-between items-center px-3">
-				<p class="font-bold -tracking-tighter text-white bg-yellow-600 h-9 flex justify-center items-center p-3 rounded-xl">Total Price:</p>
-				<p class="text-xl text-red-600 font-bold"style="font-family: 'Oswald', sans-serif; letter-spacing:0.5px" id="totalPrice">EGP 0</p>
+				<p class="font-bold -tracking-tighter text-white bg-teal-500 h-9 flex justify-center items-center p-3 rounded-xl">Total Price:</p>
+				<p class="text-xl text-indigo-600 font-bold" style="font-family: 'Oswald', sans-serif; letter-spacing:0.5px" id="totalPrice">EGP 0</p>
 			</div>
 		</aside>
+		
+		<!--favorite side ends-->
+
 
 		<!--pop up starts-->
         <div id="pop_div_holder" class="hide">
@@ -285,6 +245,54 @@
 		</div>
         <!--pop up sends-->
 		
+
+		<!--footer starts-->
+
+		<footer class="footer-footer" id="footer-footer">
+			<div class="footer-container">
+				<div class="footer-row">
+					<div class="footer-footer-col">
+						<h4>company</h4>
+						<ul>
+							<li><a href="truck.html">about us</a></li>
+							<li><a href="truck.html">our services</a></li>
+							<li><a href="privacy.html">privacy policy</a></li>
+							<li><a href="contacts.html">contact us</a></li>
+						</ul>
+					</div>
+					<div class="footer-footer-col">
+						<h4>get help</h4>
+						<ul>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">shipping</a></li>
+							<li><a href="#">returns</a></li>
+							<li><a href="#">order status</a></li>
+							<li><a href="#">payment options</a></li>
+						</ul>
+					</div>
+					<div class="footer-footer-col">
+						<h4>Watch On</h4>
+						<ul>
+							<li><a>Smartphone</a></li>
+							<li><a>Tablet</a></li>
+							<li><a>Laptop</a></li>
+							<li><a>Smart TV</a></li>
+						</ul>
+					</div>
+					<div class="footer-footer-col">
+						<h4>follow us</h4>
+						<div class="footer-social-links">
+							<a href="#"><i class="fab fa-facebook-f"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+							<a href="#"><i class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</footer>
+		<!--footer ends-->
+
 		<script src="mercedes.js"></script>
 		<script src="script.js"></script>
 	</body>
